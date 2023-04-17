@@ -1,0 +1,7 @@
+.prohome {
+  background-color: darkslategray;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+}
