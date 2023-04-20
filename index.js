@@ -14,6 +14,8 @@ const { default: mongoose } = require('mongoose');
 const { create } = require('connect-mongo');
 
 const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 
 //use middlewair
@@ -56,6 +58,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+//we set the flash after session cookies bcz it uses session cookies
+app.use(flash());
+app.use(customMware.setFlash);
 //use express routers
 app.use('/',require('./routes'));
 
