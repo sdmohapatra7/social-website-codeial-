@@ -12,7 +12,7 @@ class PostComments {
         this.newCommentForm = $(`#post-${postId}-comments-form`);
 
         this.createComment(postId);
-
+        
         let self = this;
         // call for all the existing comments
         $(' .delete-comment-button', this.postContainer).each(function () {

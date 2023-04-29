@@ -13,6 +13,8 @@
                     $('#post-list-containner>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
                     // console.log(data);
+                     // call the create comment class
+                    new PostComments(data.data.post._id);
                     new Noty
                         ({
                             theme: 'relax',
@@ -67,7 +69,7 @@
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function (data) {
-                    $(`#post-${data.post_id}`).remove();
+                    $(`#post-${data.data.post_id}`).remove();
                     new Noty
                         ({
                             theme: 'relax',

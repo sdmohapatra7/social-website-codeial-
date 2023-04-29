@@ -9,6 +9,8 @@ module.exports.create = async function (req, res) {
 
         //to check it is a xmal HTTP Request
         if (req.xhr) {
+            // if we want to populate just the name of the user (we'll not want to send the password in the API), this is how we do it! (To display the user's name with the post added dynamically)
+            // post = await Post.populate('user', 'name').execPopulate();
             return res.status(200).json({
                 data: {
                     post: post,

@@ -17,7 +17,7 @@ const { create } = require('connect-mongo');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
 //use middlewair
 app.use(express.urlencoded());
