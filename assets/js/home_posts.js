@@ -12,9 +12,8 @@
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-containner>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
-                    // console.log(data);
-                     // call the create comment class
-                    new PostComments(data.data.post._id);
+                    console.log(data);
+                    
                     new Noty
                         ({
                             theme: 'relax',
