@@ -27,7 +27,13 @@ const userSchema = new mongoose.Schema({
     isTokenValid:{
         type:Boolean,
         default:false
-    }
+    },
+    friendship: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Friendships'
+        }
+    ]
 }, {
 
     //create and update use timestamps
