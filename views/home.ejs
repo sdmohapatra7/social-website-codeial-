@@ -42,6 +42,13 @@
 </div>
 <script src="/js/home_posts.js"></script>
 <script src="/js/home_post_comments.js"></script>
+<script src="js/toogle_likes.js "></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
 <script src="/js/chat_engine.js"></script>
 <% if (locals.user){ %>

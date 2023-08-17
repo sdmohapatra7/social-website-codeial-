@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const Like = require('../models/like');
 module.exports.create = async function (req, res) {
     try {
         let post = await Post.create({
@@ -35,8 +36,10 @@ module.exports.destroy = async function (req, res) {
         let post = await Post.findById(req.params.id);
         //.id means converting the id into strings
         if (post.user == req.user.id) {
-            post.remove();
-            await Comment.deleteMany({ post: req.params.id });
+            await Like.deleteMany({likeable: post._id, onModel: 'Post'});
+            await Like.deleteMany({_id: {$in: post.comments}});
+            await post.deleteOne();
+            await Comment.deleteMany({post:req.params.id});
 
             //to check it is a xmal HTTP Request
             if (req.xhr) {
