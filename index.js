@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser')
 const app = express();
 const port = 2000;
+const cors = require('cors');
+
 //require express layouts
 const expressLayouts = require('express-ejs-layouts');
 //require mongoose 
@@ -19,6 +21,11 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
+const chatServer = require('http').createServer(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(1000);
+console.log('chat server is listening on port 1000');
+app.use(cors());
 //use middlewair
 app.use(express.urlencoded());
 //use cookieParser
